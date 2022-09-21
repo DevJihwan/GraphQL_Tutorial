@@ -1,0 +1,31 @@
+// *.graphqls 파일
+
+type Content {
+  contentId: ID!
+  contentTitle: String!
+  contentBody: String
+  comments: [Comment]
+}
+
+type Comment {
+  commentId: ID!
+  commentBody: String
+}
+
+// Root Query
+type Query {
+  contentList: [Content]
+}
+
+extend type Query {
+  commentList: [Comment]
+}
+
+type Mutation {
+  writeContent(title: String!, body: String): Int
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}
